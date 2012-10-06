@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=780">
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>
+
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
+
+    <meta name="color:Text" content="#eee" />
+    <meta name="color:Link" content="#fff" />
+    <meta name="color:Mute" content="#666" />
+    <meta name="font:Heading" content='"Helvetica Neue", Helvetica, sans-serif' />
+    <meta name="font:Body" content="Verdana, Helvetica, sans-serif" />
+    <meta name="image:Background" content="" />
+    <meta name="text:Google Analytics ID" content=""/>
+
+    <style type="text/css" media="screen">
+      body {
+        background: url({image:Background}) fixed;
+        color: {color:Text};
+        font: 14px/18px {font:Body};
+        letter-spacing: 1px;
+      }
+
+      header h1,
+      header h1 a {
+        font: 100 36px/42px {font:Heading};
+        color: {color:Text};
+        letter-spacing: 3px;
+      }
+
+      a,
+      a:active,
+      a:visited {
+        text-decoration: none;
+        color: {color:Link};
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      header,
+      section#content,
+      footer {
+        margin: 10px auto;
+        width: 760px;
+        padding: 10px;
+      }
+
+      article {
+        margin: 20px 0;
+        padding: 10px;
+        text-align: center;
+      }
+
+      article + article {
+        width: auto;
+      }
+
+      article footer {
+        font: 100 12px/14px {font:Heading};
+        width: 100%;
+        margin: 10px auto;
+        padding: 0;
+        text-align: center;
+      }
+
+      article footer span {
+        display: block;
+      }
+
+      article footer a.shortlink {
+        color: {color:Mute};
+        font-size: 10px;
+      }
+
+      article.text {
+        padding: 10px 20px;
+        text-align: left;
+      }
+
+      footer nav {
+        margin: 20px auto;
+        border-top: 1px solid {color:Mute};
+        padding: 10px 40px;
+        text-align: center;
+        font: 100 14px/16px {font:Heading};
+      }
+
+      footer nav a.prev {
+        float: left;
+      }
+
+      footer nav a.next {
+        float: right;
+      }
+
+      {CustomCSS}
+    </style>
+  </head>
+
+  <body id="{Title}">
+    <header>
+      <h1><a href="/">{Title}</a></h1>
+    </header>
+    <section id="content">
+      {block:Posts}
+      <article class="{PostType}" id="post-{PostID}">
+        {block:Text}{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}<p>{Body}</p>{/block:Text}
+        {block:Photo}
+          {block:PermalinkPage}<a href="{PhotoURL-HighRes}"><img height="{PhotoHeight-HighRes}" width="{PhotoWidth-HighRes}" src="{PhotoURL-HighRes}" alt="{PhotoAlt}"></a>{/block:PermalinkPage}
+          {block:IndexPage}<a href="{Permalink}"><img height="{PhotoHeight-500}" width="{PhotoWidth-500}" src="{PhotoURL-500}" alt="{PhotoAlt}"></a>{/block:IndexPage}
+        {/block:Photo}
+        {block:Quote}<blockquote>{Quote}</blockquote>{/block:Quote}
+        <footer>
+          <span class="time">{TimeAgo}</span>
+          <a href="{ShortURL}" class="shortlink">{ShortURL}</a>
+        </footer>
+      </article>
+      {/block:Posts}
+    </section>
+    <footer>
+      <nav>
+        {block:Pagination}
+          {block:PreviousPage}<a href="{PreviousPage}" class="prev">&larr;</a>{/block:PreviousPage}
+          page {CurrentPage} of {TotalPages}
+          {block:NextPage}<a href="{NextPage}" class="next">&rarr;</a>{/block:NextPage}
+        {/block:Pagination}
+        {block:PermalinkPagination}
+          <a href="/">back to {Title}</a>
+        {/block:PermalinkPagination}
+      </nav>
+    </footer>
+    {block:IfGoogleAnalyticsID}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];_gaq.push(['_setAccount', '{text:Google Analytics ID}']);_gaq.push(['_trackPageview']);
+      (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
+    </script>
+    {/block:IfGoogleAnalyticsID}
+  </body>
+</html>
