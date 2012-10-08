@@ -11,7 +11,7 @@
 
     <meta name="color:Text" content="#eee" />
     <meta name="color:Link" content="#fff" />
-    <meta name="color:Mute" content="#666" />
+    <meta name="color:Mute" content="#888" />
     <meta name="font:Heading" content='"Helvetica Neue", Helvetica, sans-serif' />
     <meta name="font:Body" content="Verdana, Helvetica, sans-serif" />
     <meta name="image:Background" content="" />
@@ -81,6 +81,18 @@
       article.text {
         padding: 10px 20px;
         text-align: left;
+      }
+
+      article.quote blockquote {
+        text-align: center;
+        padding: 24px;
+        width: 500px;
+        background-color: {color:Text};
+        color: {color:Mute};
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        margin: 0 auto;
       }
 
       footer nav {
