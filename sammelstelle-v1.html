@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="color:Text" content="#eee" />
+    <meta name="color:Link" content="#fff" />
+    <meta name="color:Mute" content="#888" />
+    
+    <meta name="font:Heading" content='"Helvetica Neue", Helvetica, sans-serif' />
+    <meta name="font:Body" content="Verdana, Helvetica, sans-serif" />
+    
+    <meta name="image:Background" content="" />
+    
+    <meta name="text:Google Analytics ID" content=""/>
+    <meta name="text:Facebook App ID" content=""/>
+
+    <meta name="if:Facebook Dark Theme" content="0" />
+    
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=780">
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
@@ -9,27 +23,19 @@
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
 
-    <meta name="color:Text" content="#eee" />
-    <meta name="color:Link" content="#fff" />
-    <meta name="color:Mute" content="#888" />
-    <meta name="font:Heading" content='"Helvetica Neue", Helvetica, sans-serif' />
-    <meta name="font:Body" content="Verdana, Helvetica, sans-serif" />
-    <meta name="image:Background" content="" />
-    <meta name="text:Google Analytics ID" content=""/>
-
     <style type="text/css" media="screen">
       body {
-        background: url({image:Background}) fixed;
-        color: {color:Text};
-        font: 14px/18px {font:Body};
         letter-spacing: 1px;
+        color: {color:Text};
+        background: url({image:Background}) fixed;
+        font: 14px/18px {font:Body};
       }
 
       header h1,
       header h1 a {
+        letter-spacing: 3px;
         font: 100 36px/42px {font:Heading};
         color: {color:Text};
-        letter-spacing: 3px;
       }
 
       a,
@@ -62,20 +68,33 @@
       }
 
       article footer {
-        font: 100 12px/14px {font:Heading};
         width: 100%;
         margin: 10px auto;
         padding: 0;
         text-align: center;
-      }
-
-      article footer span {
-        display: block;
-      }
-
-      article footer a.shortlink {
+        font: 100 12px/14px {font:Heading};
         color: {color:Mute};
+      }
+
+      article footer a,
+      article footer a:active,
+      article footer a:visited {
         font-size: 10px;
+        color: {color:Mute};
+      }
+
+      article footer span.time {
+        display: block;
+        color: {color:Text};
+      }
+      
+      article aside {
+        margin: 48px 0 0 0;
+      }
+      
+      article aside span {
+        height: 1px !important;
+        min-height: 80px;
       }
 
       article.text {
@@ -87,20 +106,20 @@
         text-align: center;
         padding: 24px;
         width: 500px;
-        background-color: {color:Text};
-        color: {color:Mute};
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
         margin: 0 auto;
+        background-color: {color:Text};
+        color: {color:Mute};
       }
 
       footer nav {
         margin: 20px auto;
-        border-top: 1px solid {color:Mute};
         padding: 10px 40px;
         text-align: center;
         font: 100 14px/16px {font:Heading};
+        border-top: 1px solid {color:Mute};
       }
 
       footer nav a.prev {
@@ -116,6 +135,13 @@
   </head>
 
   <body id="{Title}">
+    {block:ifFacebookAppID}
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() { FB.init({ appId: '{text:Facebook App ID}', status: true, cookie: true, xfbml: true }); };
+      (function(d){ var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0]; if (d.getElementById(id)) {return;} js = d.createElement('script'); js.id = id; js.async = true;js.src = "//connect.facebook.net/en_US/all.js"; ref.parentNode.insertBefore(js, ref); }(document));
+    </script>
+    {/block:ifFacebookAppID}
     <header>
       <h1><a href="/">{Title}</a></h1>
     </header>
@@ -130,8 +156,15 @@
         {block:Quote}<blockquote>{Quote}</blockquote>{/block:Quote}
         <footer>
           <span class="time">{TimeAgo}</span>
-          <a href="{ShortURL}" class="shortlink">{ShortURL}</a>
+          {block:ifFacebookAppID}{block:IndexPage}
+          <a href="{Permalink}#fbcomments"><span class="fb-comments-count" data-href="{Permalink}"></span> facebook comments</a> &mdash; 
+          {/block:IndexPage}{/block:ifFacebookAppID}
+          <a href="{ShortURL}">{ShortURL}</a>
         </footer>
+        {block:ifFacebookAppID}{block:PermalinkPage}
+        <a name="fb-comments"></a>
+        <aside id="fb-comments" class="fb-comments" data-href="{Permalink}" data-num-posts="6" data-width="500"{block:IfFacebookDarkTheme} data-colorscheme="dark"{/block:IfFacebookDarkTheme}></aside>
+        {/block:PermalinkPage}{/block:ifFacebookAppID}
       </article>
       {/block:Posts}
     </section>
