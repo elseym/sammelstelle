@@ -9,9 +9,10 @@ features
 + specify custom foreground colours and fonts via dashboard
 + specify custom background image via dashboard
 + add your google analytics account via dashboard
++ add your google adsense details via dashboard
 + add your facebook app-id to enable comments on posts
 + shortened permalink for each post
-+ 500px pictures in index view, highres in post view
++ 400px pictures in index view, 500px in post view linked to highres picture
 + support for pictures, text, quotes
 + relative timestamps for posts
 
