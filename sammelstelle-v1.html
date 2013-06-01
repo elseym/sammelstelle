@@ -11,6 +11,10 @@
     <meta name="image:Background" content="" />
     
     <meta name="text:Google Analytics ID" content=""/>
+    
+    <meta name="text:Google Adsense Client" content=""/>
+    <meta name="text:Google Adsense Slot" content=""/>
+    
     <meta name="text:Facebook App ID" content=""/>
 
     <meta name="if:Facebook Dark Theme" content="0" />
@@ -113,6 +117,20 @@
         background-color: {color:Text};
         color: {color:Mute};
       }
+      
+      aside.ads {
+        opacity: .5;
+        margin: 15px auto;
+        width: 728px;
+      }
+      
+      article aside.ads {
+        margin: 60px auto 0 auto;
+      }
+      
+      aside.ads:hover {
+        opacity: .9;
+      }
 
       footer nav {
         margin: 20px auto;
@@ -145,6 +163,12 @@
     <header>
       <h1><a href="/">{Title}</a></h1>
     </header>
+    {block:ifGoogleAdsenseClient}{block:ifGoogleAdsenseSlot}{block:IndexPage}
+    <aside class="ads">
+      <script type="text/javascript">google_ad_client = "ca-{text:Google Adsense Client}"; google_ad_slot = "{text:Google Adsense Slot}"; google_ad_width = 728; google_ad_height = 90;</script>
+      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </aside>
+    {/block:IndexPage}{/block:ifGoogleAdsenseSlot}{/block:ifGoogleAdsenseClient}
     <section id="content">
       {block:Posts}
       <article class="{PostType}" id="post-{PostID}">
@@ -161,6 +185,12 @@
           {/block:IndexPage}{/block:ifFacebookAppID}
           <a href="{ShortURL}">{ShortURL}</a>
         </footer>
+        {block:ifGoogleAdsenseClient}{block:ifGoogleAdsenseSlot}{block:PermalinkPage}
+        <aside class="ads">
+          <script type="text/javascript">google_ad_client = "ca-{text:Google Adsense Client}"; google_ad_slot = "{text:Google Adsense Slot}"; google_ad_width = 728; google_ad_height = 90;</script>
+          <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+        </aside>
+        {/block:PermalinkPage}{/block:ifGoogleAdsenseSlot}{/block:ifGoogleAdsenseClient}
         {block:ifFacebookAppID}{block:PermalinkPage}
         <a name="fb-comments"></a>
         <aside id="fb-comments" class="fb-comments" data-href="{Permalink}" data-num-posts="6" data-width="500"{block:IfFacebookDarkTheme} data-colorscheme="dark"{/block:IfFacebookDarkTheme}></aside>
@@ -168,6 +198,12 @@
       </article>
       {/block:Posts}
     </section>
+    {block:ifGoogleAdsenseClient}{block:ifGoogleAdsenseSlot}{block:IndexPage}
+    <aside class="ads">
+      <script type="text/javascript">google_ad_client = "ca-{text:Google Adsense Client}"; google_ad_slot = "{text:Google Adsense Slot}"; google_ad_width = 728; google_ad_height = 90;</script>
+      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </aside>
+    {/block:IndexPage}{/block:ifGoogleAdsenseSlot}{/block:ifGoogleAdsenseClient}
     <footer>
       <nav>
         {block:Pagination}
