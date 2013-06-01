@@ -174,8 +174,8 @@
       <article class="{PostType}" id="post-{PostID}">
         {block:Text}{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}<p>{Body}</p>{/block:Text}
         {block:Photo}
-          {block:PermalinkPage}<a href="{PhotoURL-HighRes}"><img height="{PhotoHeight-HighRes}" width="{PhotoWidth-HighRes}" src="{PhotoURL-HighRes}" alt="{PhotoAlt}"></a>{/block:PermalinkPage}
-          {block:IndexPage}<a href="{Permalink}"><img height="{PhotoHeight-500}" width="{PhotoWidth-500}" src="{PhotoURL-500}" alt="{PhotoAlt}"></a>{/block:IndexPage}
+          {block:PermalinkPage}<a href="{PhotoURL-HighRes}"><img height="{PhotoHeight-500}" width="{PhotoWidth-500}" src="{PhotoURL-500}" alt="{PhotoAlt}"></a>{/block:PermalinkPage}
+          {block:IndexPage}<a href="{Permalink}"><img height="{PhotoHeight-400}" width="{PhotoWidth-400}" src="{PhotoURL-400}" alt="{PhotoAlt}"></a>{/block:IndexPage}
         {/block:Photo}
         {block:Quote}<blockquote>{Quote}</blockquote>{/block:Quote}
         <footer>
