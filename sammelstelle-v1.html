@@ -35,13 +35,6 @@
         font: 14px/18px {font:Body};
       }
 
-      header h1,
-      header h1 a {
-        letter-spacing: 3px;
-        font: 100 36px/42px {font:Heading};
-        color: {color:Text};
-      }
-
       a,
       a:active,
       a:visited {
@@ -51,6 +44,46 @@
 
       a:hover {
         text-decoration: underline;
+      }
+
+      header a,
+      header a:active,
+      header a:visited,
+      header a:hover {
+        text-decoration: none;
+        letter-spacing: 3px;
+      }
+
+      header h1 a,
+      header h1 a:active,
+      header h1 a:visited {
+        font: 100 36px/42px {font:Heading};
+        color: {color:Text};
+      }
+
+      header h1 a:hover {
+        color: {color:Link};
+      }
+
+      header h2 a,
+      header h2 a:active,
+      header h2 a:visited {
+        padding: 0 6px;
+        position: relative;
+        font: 100 14px/18px {font:Heading};
+        color: {color:Mute};
+      }
+
+      header h2 a:hover {
+        color: {color:Text};
+      }
+
+      header h2 a:before {
+        content: "\2002\203A\2009";
+      }
+
+      header h1 + h2 {
+        margin-top: -24px;
       }
 
       header,
@@ -161,7 +194,13 @@
     </script>
     {/block:ifFacebookAppID}
     <header>
-      <h1><a href="/">{Title}</a></h1>
+      <h1>
+        <a href="/">{Title}</a>
+      </h1>
+      {block:HasPages}<h2>
+         {block:Pages}<a href="{URL}">{Label}</a>
+         {/block:Pages}
+       </h2>{/block:HasPages}
     </header>
     {block:ifGoogleAdsenseClient}{block:ifGoogleAdsenseSlot}{block:IndexPage}
     <aside class="ads">

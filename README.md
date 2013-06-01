@@ -15,6 +15,7 @@ features
 + 400px pictures in index view, 500px in post view linked to highres picture
 + support for pictures, text, quotes
 + relative timestamps for posts
++ support for static pages
 
 license
 -------
