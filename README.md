@@ -16,6 +16,7 @@ features
 + support for pictures, text, quotes
 + relative timestamps for posts
 + support for static pages
++ support for facebook sharing meta tags (title, description, image)
 
 license
 -------
