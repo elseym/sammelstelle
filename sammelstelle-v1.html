@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <meta name="color:Text" content="#eee" />
     <meta name="color:Link" content="#fff" />
@@ -18,7 +21,8 @@
     <meta name="text:Facebook App ID" content=""/>
 
     <meta name="if:Facebook Dark Theme" content="0" />
-    
+    <meta name="if:Facebook OpenGraph Metadata" content="1" />
+
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=780">
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
@@ -26,6 +30,16 @@
 
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
+
+    {block:ifFacebookOpenGraphMetadata}
+    <meta property="og:title" content="{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}" />
+    {block:IndexPage}<meta property="og:image" content="{HeaderImage}"/>{/block:IndexPage}
+    {block:PermalinkPage}{block:Posts}
+    {block:Text}<meta property="og:description" content="{Body}" />{/block:Text}
+    {block:Photo}<meta property="og:image" content="{PhotoURL-500}"/>{/block:Photo}
+    {block:Quote}<meta property="og:description" content="{Quote}" />{/block:Quote}
+    {/block:Posts}{/block:PermalinkPage}
+    {/block:ifFacebookOpenGraphMetadata}
 
     <style type="text/css" media="screen">
       body {
