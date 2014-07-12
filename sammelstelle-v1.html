@@ -22,7 +22,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=780">
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-    <title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>
+    <title>{block:PostTitle}{PostTitle} - {/block:PostTitle}{Title}</title>
 
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
